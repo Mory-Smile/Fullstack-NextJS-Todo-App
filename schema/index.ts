@@ -16,6 +16,7 @@ export const todoFormSchema = z.object({
       message: "Short Description must not be longer than 30 characters.",
     })
     .optional(),
+  completed: z.boolean(),
 });
 
 export type todoFormValues = z.infer<typeof todoFormSchema>;

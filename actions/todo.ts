@@ -1,6 +1,7 @@
 "use server";
 
 import { PrismaClient } from "@prisma/client";
+import { boolean } from "zod";
 
 const prisma = new PrismaClient();
 
@@ -11,14 +12,17 @@ export const getTodoList = async () => {
 export const createTodo = async ({
   title,
   body,
+  completed,
 }: {
   title: string;
   body?: string | undefined;
+  completed: boolean;
 }) => {
   await prisma.todo.create({
     data: {
       title: title,
       body: body,
+      completed: completed,
     },
   });
 };

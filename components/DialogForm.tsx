@@ -15,7 +15,6 @@ import { Input } from "@/components/ui/input";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -27,11 +26,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { todoFormValues, todoFormSchema } from "@/schema";
 import { createTodo } from "@/actions/todo";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export function DialogDemo() {
   const defaultValues: Partial<todoFormValues> = {
-    title: "DEFAULT TITLE",
-    body: "DEFAULT DESC",
+    title: "",
+    body: "",
+    completed: false,
   };
 
   const form = useForm<todoFormValues>({
@@ -41,7 +42,11 @@ export function DialogDemo() {
   });
 
   const onSubmit = async (data: todoFormValues) => {
-    await createTodo({ title: data.title, body: data.body });
+    await createTodo({
+      title: data.title,
+      body: data.body,
+      completed: data.completed,
+    });
   };
 
   return (
@@ -68,7 +73,7 @@ export function DialogDemo() {
                   <FormItem>
                     <FormLabel>Title</FormLabel>
                     <FormControl>
-                      <Input placeholder="Go for a walk" {...field} />
+                      <Input placeholder="Ex: Go for a walk" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -83,8 +88,25 @@ export function DialogDemo() {
                     <FormLabel>Add short drscription (optional)</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Finish this task as soon as possible!"
+                        placeholder="Ex: Finish this task as soon as possible!"
                         className="resize-none"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="completed"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="pr-1">Completed</FormLabel>
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
                         {...field}
                       />
                     </FormControl>
