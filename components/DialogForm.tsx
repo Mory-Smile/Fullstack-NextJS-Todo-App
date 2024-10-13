@@ -107,7 +107,6 @@ export function DialogDemo() {
                       <Checkbox
                         checked={field.value}
                         onCheckedChange={field.onChange}
-                        {...field}
                       />
                     </FormControl>
                     <FormMessage />
