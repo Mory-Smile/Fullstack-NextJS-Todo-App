@@ -3,17 +3,10 @@ import localFont from "next/font/local";
 
 import { ThemeProvider } from "@/providers/theme-provider";
 
-import { ModeToggle } from "@/components/ModeToggle";
-
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
 
 import "./globals.css";
+import Nav from "@/components/Nav";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -48,7 +41,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <ModeToggle />
+            <Nav />
             {children}
           </ThemeProvider>
         </body>
