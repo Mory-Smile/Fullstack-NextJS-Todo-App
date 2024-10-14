@@ -1,24 +1,24 @@
 "use client";
 
-import { Pen, Trash } from "lucide-react";
+import { Trash } from "lucide-react";
 import { Button } from "./ui/button";
 import Spinner from "./Spinner";
 import { deleteTodo } from "@/actions/todo";
 import { useState } from "react";
+import { EditTodoForm } from "./EditTodoForm";
+import { ITodo } from "@/interfaces";
 
-const Buttons = ({ id }: { id: string }) => {
+const Buttons = ({ todo }: { todo: ITodo }) => {
   const [loading, setLoading] = useState(false);
   return (
     <>
-      <Button size={"icon"}>
-        <Pen size={18} />
-      </Button>
+      <EditTodoForm todo={todo} />
       <Button
         size={"icon"}
         variant={"destructive"}
         onClick={async () => {
           setLoading(true);
-          await deleteTodo({ id: id });
+          await deleteTodo({ id: todo.id });
           setLoading(false);
         }}
       >

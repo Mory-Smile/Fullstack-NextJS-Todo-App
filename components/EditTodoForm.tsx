@@ -19,7 +19,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Plus } from "lucide-react";
+import { Pen, Plus } from "lucide-react";
 import { Textarea } from "./ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -28,14 +28,15 @@ import { createTodo } from "@/actions/todo";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
 import Spinner from "./Spinner";
+import { ITodo } from "@/interfaces";
 
-export function AddTodoForm() {
+export function EditTodoForm({ todo }: { todo: ITodo }) {
   const [loading, setLoading] = useState(false);
   const [opened, setOpened] = useState(false);
   const defaultValues: Partial<todoFormValues> = {
-    title: "",
-    body: "",
-    completed: false,
+    title: todo.title,
+    body: todo.body as string,
+    completed: todo.completed,
   };
 
   const form = useForm<todoFormValues>({
@@ -46,11 +47,13 @@ export function AddTodoForm() {
 
   const onSubmit = async (data: todoFormValues) => {
     setLoading(true);
-    await createTodo({
-      title: data.title,
-      body: data.body,
-      completed: data.completed,
-    });
+    // ** UPDATE TODO
+
+    // await createTodo({
+    //   title: data.title,
+    //   body: data.body,
+    //   completed: data.completed,
+    // });
     setLoading(false);
     setOpened(false);
   };
@@ -58,13 +61,13 @@ export function AddTodoForm() {
   return (
     <Dialog open={opened} onOpenChange={setOpened}>
       <DialogTrigger asChild>
-        <Button className="flex gap-1">
-          <Plus size={25} /> Add New Todo
+        <Button>
+          <Pen size={18} />
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle className="text-center pb-5">Add New Todo</DialogTitle>
+          <DialogTitle className="text-center pb-5">Edit this Todo</DialogTitle>
           <DialogDescription className="text-center">
             Appreciate all the hard work you have put in :D
           </DialogDescription>

@@ -39,7 +39,7 @@ export default function TodoTable({ todos }: { todos: ITodo[] }) {
               )}
             </TableCell>
             <TableCell className="flex items-center justify-end space-x-2">
-              <Buttons id={todo.id} />
+              <Buttons todo={todo} />
             </TableCell>
           </TableRow>
         ))}

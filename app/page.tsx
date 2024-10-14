@@ -1,4 +1,4 @@
-import { DialogDemo as DialogForm } from "@/components/DialogForm";
+import { AddTodoForm as DialogForm } from "@/components/DialogForm";
 import { getTodoList } from "@/actions/todo";
 import TodoTable from "@/components/TodoTable";
 
