@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Table,
   TableBody,
@@ -8,10 +10,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
-import { Pen, Trash } from "lucide-react";
 import { ITodo } from "@/interfaces";
+import Buttons from "./Buttons";
 
 export default function TodoTable({ todos }: { todos: ITodo[] }) {
   return (
@@ -40,22 +41,17 @@ export default function TodoTable({ todos }: { todos: ITodo[] }) {
               )}
             </TableCell>
             <TableCell className="flex items-center justify-end space-x-2">
-              <Button size={"icon"}>
-                <Pen size={18} />
-              </Button>
-              <Button size={"icon"} variant={"destructive"}>
-                <Trash size={18} />
-              </Button>
+              <Buttons id={todo.id} />
             </TableCell>
           </TableRow>
         ))}
       </TableBody>
-      {/* <TableFooter>
+      <TableFooter>
         <TableRow>
           <TableCell colSpan={3}>Total</TableCell>
-          <TableCell className="text-right">{invoices.length}</TableCell>
+          <TableCell className="text-right">{todos.length}</TableCell>
         </TableRow>
-      </TableFooter> */}
+      </TableFooter>
     </Table>
   );
 }

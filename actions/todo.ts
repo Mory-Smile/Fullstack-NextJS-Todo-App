@@ -1,7 +1,6 @@
 "use server";
 
 import { PrismaClient } from "@prisma/client";
-import { boolean } from "zod";
 
 const prisma = new PrismaClient();
 
@@ -27,4 +26,10 @@ export const createTodo = async ({
   });
 };
 export const updateTodo = async () => {};
-export const deleteTodo = async () => {};
+export const deleteTodo = async ({ id }: { id: string }) => {
+  await prisma.todo.delete({
+    where: {
+      id: id,
+    },
+  });
+};
