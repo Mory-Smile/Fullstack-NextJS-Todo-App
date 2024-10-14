@@ -1,4 +1,4 @@
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { ModeToggle } from "./ModeToggle";
 
 const Nav = () => {
