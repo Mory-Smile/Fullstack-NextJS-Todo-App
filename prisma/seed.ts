@@ -6,13 +6,13 @@ const prisma = new PrismaClient();
 async function main() {
   // ** Generate fake data for Todo model
 
-  await prisma.todo.createMany({
-    data: Array.from({ length: 25 }, () => ({
-      title: faker.lorem.word(),
-      body: faker.lorem.text(),
-      user_id: faker.lorem.lines(),
-    })),
-  });
+  // await prisma.todo.createMany({
+  //   data: Array.from({ length: 25 }, () => ({
+  //     title: faker.lorem.word(),
+  //     body: faker.lorem.text(),
+  //     user_id: faker.lorem.lines(),
+  //   })),
+  // });
 
   // ** Generate fake data for User model
 
