@@ -24,7 +24,7 @@ import { Textarea } from "./ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { todoFormValues, todoFormSchema } from "@/schema";
-import { createTodo } from "@/actions/todo";
+import { updateTodo } from "@/actions/todo";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
 import Spinner from "./Spinner";
@@ -49,11 +49,13 @@ export function EditTodoForm({ todo }: { todo: ITodo }) {
     setLoading(true);
     // ** UPDATE TODO
 
-    // await createTodo({
-    //   title: data.title,
-    //   body: data.body,
-    //   completed: data.completed,
-    // });
+    await updateTodo({
+      id: todo.id,
+      title: data.title,
+      body: data.body as string,
+      completed: data.completed,
+    });
+
     setLoading(false);
     setOpened(false);
   };

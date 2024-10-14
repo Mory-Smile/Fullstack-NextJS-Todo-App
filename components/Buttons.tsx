@@ -18,7 +18,7 @@ const Buttons = ({ todo }: { todo: ITodo }) => {
         variant={"destructive"}
         onClick={async () => {
           setLoading(true);
-          await deleteTodo({ id: todo.id });
+          await deleteTodo({ id: todo?.id as string });
           setLoading(false);
         }}
       >
