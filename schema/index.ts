@@ -6,14 +6,14 @@ export const todoFormSchema = z.object({
     .min(5, {
       message: "title must be at least 5 characters.",
     })
-    .max(25, {
+    .max(30, {
       message: "title must not be longer than 30 characters.",
     }),
 
   body: z
     .string()
-    .max(85, {
-      message: "Short Description must not be longer than 30 characters.",
+    .max(100, {
+      message: "Short Description must not be longer than 100 characters.",
     })
     .optional(),
   completed: z.boolean(),
