@@ -2,10 +2,12 @@
 
 import { PrismaClient } from "@prisma/client";
 
+import { revalidatePath } from "next/cache";
+
 const prisma = new PrismaClient();
 
 export const getTodoList = async () => {
-  return await prisma.todo.findMany();
+  return await prisma.todo.findMany({ orderBy: { createdAt: "desc" } });
   //   ** ERORR HANDLING
 };
 export const createTodo = async ({
@@ -24,6 +26,7 @@ export const createTodo = async ({
       completed: completed,
     },
   });
+  revalidatePath("/");
 };
 export const updateTodo = async () => {};
 export const deleteTodo = async ({ id }: { id: string }) => {
@@ -32,4 +35,5 @@ export const deleteTodo = async ({ id }: { id: string }) => {
       id: id,
     },
   });
+  revalidatePath("/");
 };

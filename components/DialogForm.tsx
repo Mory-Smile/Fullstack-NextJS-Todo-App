@@ -27,8 +27,12 @@ import { useForm } from "react-hook-form";
 import { todoFormValues, todoFormSchema } from "@/schema";
 import { createTodo } from "@/actions/todo";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useState } from "react";
+import Spinner from "./Spinner";
 
 export function DialogDemo() {
+  const [loading, setLoading] = useState(false);
+  const [opened, setOpened] = useState(false);
   const defaultValues: Partial<todoFormValues> = {
     title: "",
     body: "",
@@ -42,15 +46,18 @@ export function DialogDemo() {
   });
 
   const onSubmit = async (data: todoFormValues) => {
+    setLoading(true);
     await createTodo({
       title: data.title,
       body: data.body,
       completed: data.completed,
     });
+    setLoading(false);
+    setOpened(false);
   };
 
   return (
-    <Dialog>
+    <Dialog open={opened} onOpenChange={setOpened}>
       <DialogTrigger asChild>
         <Button className="flex gap-1">
           <Plus size={25} /> Add New Todo
@@ -79,7 +86,6 @@ export function DialogDemo() {
                   </FormItem>
                 )}
               />
-
               <FormField
                 control={form.control}
                 name="body"
@@ -113,7 +119,15 @@ export function DialogDemo() {
                   </FormItem>
                 )}
               />
-              <Button type="submit">Save changes</Button>
+              <Button type="submit" disabled={loading}>
+                {loading ? (
+                  <>
+                    <Spinner /> <span className="pl-2">Saving...</span>
+                  </>
+                ) : (
+                  "Save changes"
+                )}
+              </Button>
             </form>
           </Form>
         </div>

@@ -3,7 +3,6 @@
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableFooter,
   TableHead,
@@ -17,7 +16,6 @@ import Buttons from "./Buttons";
 export default function TodoTable({ todos }: { todos: ITodo[] }) {
   return (
     <Table>
-      <TableCaption>A list of your recent invoices.</TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead>ID</TableHead>
