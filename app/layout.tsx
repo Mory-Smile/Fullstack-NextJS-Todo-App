@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import { ThemeProvider } from "@/providers/theme-provider";
 
 import { ClerkProvider } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
 
 import "./globals.css";
 import Nav from "@/components/Nav";
@@ -30,7 +31,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      signInFallbackRedirectUrl="/dashboard"
+      signUpFallbackRedirectUrl="/onboarding"
+      appearance={{
+        baseTheme: [dark],
+      }}
+    >
       <html lang="en">
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -42,7 +49,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <Nav />
-            {children}
+            <div className="flex justify-center">{children}</div>
           </ThemeProvider>
         </body>
       </html>

@@ -76,3 +76,12 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@media (max-width: 540px) {
+  td {
+    padding: 0.598rem !important;
+  }
+  .py-0\.5 {
+    padding: 1rem !important;
+  }
+}

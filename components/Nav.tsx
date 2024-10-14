@@ -8,9 +8,7 @@ const Nav = () => {
       <SignedIn>
         <UserButton />
       </SignedIn>
-      <SignedOut>
-        <SignInButton />
-      </SignedOut>
+      <SignedOut>{/* <SignInButton /> */}</SignedOut>
     </nav>
   );
 };
