@@ -29,7 +29,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
 import Spinner from "./Spinner";
 
-export function AddTodoForm() {
+export function AddTodoForm({ userId }: { userId: string | null }) {
   const [loading, setLoading] = useState(false);
   const [opened, setOpened] = useState(false);
   const defaultValues: Partial<todoFormValues> = {
@@ -50,6 +50,7 @@ export function AddTodoForm() {
       title: data.title,
       body: data.body,
       completed: data.completed,
+      userId: userId,
     });
     setLoading(false);
     setOpened(false);
