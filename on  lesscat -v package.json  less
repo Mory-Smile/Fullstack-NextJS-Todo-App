@@ -1,0 +1,60 @@
+{^M
+  "name": "my-fullstack-nextjs-app",^M
+  "version": "0.1.1",^M
+  "private": true,^M
+  "scripts": {^M
+    "dev": "next dev",^M
+    "build": "next build && prisma generate",^M
+    "start": "next start",^M
+    "lint": "next lint"^M
+  },^M
+  "dependencies": {^M
+    "@clerk/nextjs": "^5.7.5",^M
+    "@clerk/themes": "^2.1.35",^M
+    "@hookform/resolvers": "^3.9.0",^M
+    "@prisma/client": "^6.8.2",^M
+    "@radix-ui/react-checkbox": "^1.1.2",^M
+    "@radix-ui/react-dialog": "^1.1.2",^M
+    "@radix-ui/react-dropdown-menu": "^2.1.2",^M
+    "@radix-ui/react-label": "^2.1.0",^M
+    "@radix-ui/react-slot": "^1.1.0",^M
+    "class-variance-authority": "^0.7.0",^M
+    "clsx": "^2.1.1",^M
+    "download": "^8.0.0",^M
+    "lucide-react": "^0.452.0",^M
+    "mongodb": "^6.16.0",^M
+    "next": "14.2.15",^M
+    "next-themes": "^0.3.0",^M
+    "react": "^18",^M
+    "react-dom": "^18",^M
+    "react-hook-form": "^7.53.0",^M
+    "tailwind-merge": "^2.5.3",^M
+    "tailwindcss-animate": "^1.0.7",^M
+    "zod": "^3.23.8"^M
+  },^M
+  "devDependencies": {^M
+    "@faker-js/faker": "^9.0.3",^M
+    "@types/node": "^20.16.11",^M
+    "@types/react": "^18",^M
+    "@types/react-dom": "^18",^M
+    "eslint": "^8",^M
+    "eslint-config-next": "14.2.15",^M
+    "postcss": "^8",^M
+    "prisma": "^6.8.2",^M
+    "tailwindcss": "^3.4.1",^M
+    "ts-node": "^10.9.2",^M
+    "tsx": "^4.19.1",^M
+    "typescript": "^5.6.3"^M
+  },^M
+  "prisma": {^M
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"^M
+  },^M
+  "description": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).",^M
+  "main": "index.js",^M
+  "directories": {^M
+    "lib": "lib"^M
+  },^M
+  "keywords": [],^M
+  "author": "",^M
+  "license": "ISC"^M
+}^M
