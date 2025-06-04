@@ -1,6 +1,4 @@
-{
-  "name": "my-fullstack-nextjs-app",
-  "version": "0.1.0",
+{"name": "my-fullstack-nextjs-app", "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -48,5 +46,4 @@
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
-  }
-}
+  }}
